@@ -21,6 +21,7 @@ for instance suppose that you need something from alphabet support and
 try :
     from castervoice.rules.core.alphabet_rules.alphabet_support import something
 except ImportError:
+    from alphabet_rules.alphabet_support import something
 '''
 message = " ".join(message.splitlines())
 
