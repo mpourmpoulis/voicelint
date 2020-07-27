@@ -27,6 +27,11 @@ class RuleDetailsChecker(BaseChecker):
             ",... or Function Contexts (`function_context`). You need to use `CCRType.APP` in both cases!",
             "global-no-context",
             ''
+        ),
+        "E07":(
+            "CCR RuleDetails cannot have a name!",
+            "ccr-rule-details-have-no-name",
+            ""
         )
 
     }
@@ -49,9 +54,16 @@ class RuleDetailsChecker(BaseChecker):
             ccrtype = next(x.value for x in details.keywords if x.arg == "ccrtype") 
             if self.cl[name] == ["MappingRule"]:
                 self.add_message("mapping-rule-is-not-ccr",node=node)
+            try :
+                problematic_name = next(x for x in details.keywords if x.arg =="name") 
+                self.add_message("ccr-rule-details-have-no-name",node=problematic_name)
+            except :
+                pass
             if ccrtype.as_string()=="CCRType.GLOBAL":
                 if any(x for x in details.keywords if x.arg in ["executable","title","handle","function_context"]):
                     self.add_message("global-no-context",node=node)
+            
+
 
         except StopIteration:
             pass
