@@ -32,6 +32,11 @@ class RuleDetailsChecker(BaseChecker):
             "CCR RuleDetails cannot have a name!",
             "ccr-rule-details-have-no-name",
             ""
+        ),
+        "E08":(
+            "if you want to declare self modifying CCR you need to use `CCRType.SELFMOD`",
+            "incorrect-ccrtype-selfmod",
+            ""
         )
 
     }
@@ -57,12 +62,14 @@ class RuleDetailsChecker(BaseChecker):
             try :
                 problematic_name = next(x for x in details.keywords if x.arg =="name") 
                 self.add_message("ccr-rule-details-have-no-name",node=problematic_name)
-            except :
+            except StopIteration:
                 pass
             if ccrtype.as_string()=="CCRType.GLOBAL":
                 if any(x for x in details.keywords if x.arg in ["executable","title","handle","function_context"]):
                     self.add_message("global-no-context",node=node)
-            
+            if "BaseSelfModifyingRule" in self.cl and ccrtype.as_string()!="CCRType.SELFMOD":
+                self.add_message("incorrect-ccrtype-selfmod",node=ccrtype)
+
 
 
         except StopIteration:
