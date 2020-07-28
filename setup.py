@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.0",
     author="mpourmpoulis",
     # author_email="author@example.com",
-    description="pylint plug-in for users of the program and by voice toolkit Caster",
+    description="pylint plug-in for users of the programing by voice toolkit Caster",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mpourmpoulis/voicelint",
