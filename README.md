@@ -63,6 +63,8 @@ and now you should be up and running!!!
 
 ## Currently Recognized Errors/Mistakes
 
+Not that many for the time being but I hope they help!
+
 ### Mimic Errors
 
 ```python
