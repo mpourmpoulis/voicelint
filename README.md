@@ -12,7 +12,7 @@
 	- [Pause errors](#pause-errors)
 	- [Forgeting Conditional Import](#forgeting-conditional-import)
 	- [Various Rule Details Errors](#various-rule-details-errors)
-	- [Key Errors](#key-errors)
+	- [Key-Text-Mouse Separated strings Errors](#key-text-mouse-separated-strings-errors)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -127,16 +127,19 @@ def get_rule():
 and many others for the current version of Caster (28/07/2020)
 
 
-### Key Errors
+### Key-Text-Mouse Separated strings Errors
 
 All the key presses should be in a single string
 
 ```python
 Key("c-a","c-c")
-
+Text("nice","day")
+Mouse("[12,100]","(4,5)")
 vs
 
 Key("c-a,c-c")
+Text("nice day")
+Mouse("[12,100],(4,5)")
 ```
 
 ## License

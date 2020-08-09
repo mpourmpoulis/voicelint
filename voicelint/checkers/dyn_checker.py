@@ -33,7 +33,7 @@ class DynStrChecker(BaseChecker):
             s = list(filter(is_string,node.args))
             if len(s)<=1:
                 return 
-            js = ("," if name!="Text" else "").join(x.value for x in s)
+            js = ("," if name!="Text" else " ").join(x.value for x in s)
             text = '{}("{}")'.format(name,re.sub(r",{2,}",r",",js))
             self.add_message("dyn-separated-strings", node=node,args=(name,text))
 
