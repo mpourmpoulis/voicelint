@@ -13,26 +13,27 @@ def is_string(x):
 
 
 @apply_id
-class KeyChecker(BaseChecker):
+class DynStrChecker(BaseChecker):
     __implements__ = IAstroidChecker
 
-    name = 'key-checker'
+    name = 'dyn-checker'
     priority = -1
     msgs = {
         'E10': (
-            'The entire Key should be inside a single string! You should use:`%s` instead!',
-            "key-separated-strings",
+            'The entire %s spec should be inside a single string! You should use:`%s` instead!',
+            "dyn-separated-strings",
             ""
         ),
     }
 
 
     def visit_call(self,node):
-        if node.func.as_string()=="Key":
+        name = node.func.as_string()
+        if name in ["Key","Text","Mouse"]:
             s = list(filter(is_string,node.args))
             if len(s)<=1:
                 return 
-            js = ",".join(x.value for x in s)
-            text = 'Key("{}")'.format(re.sub(r",{2,}",r",",js))
-            self.add_message("key-separated-strings", node=node,args=text)
+            js = ("," if name!="Text" else "").join(x.value for x in s)
+            text = '{}("{}")'.format(name,re.sub(r",{2,}",r",",js))
+            self.add_message("dyn-separated-strings", node=node,args=(name,text))
 
