@@ -12,6 +12,7 @@
 	- [Pause errors](#pause-errors)
 	- [Forgeting Conditional Import](#forgeting-conditional-import)
 	- [Various Rule Details Errors](#various-rule-details-errors)
+	- [Key Errors](#key-errors)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -124,6 +125,19 @@ def get_rule():
 ```
 
 and many others for the current version of Caster (28/07/2020)
+
+
+### Key Errors
+
+All the key presses should be in a single string
+
+```python
+Key("c-a","c-c")
+
+vs
+
+Key("c-a,c-c")
+```
 
 ## License
 
