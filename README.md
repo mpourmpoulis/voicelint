@@ -13,6 +13,7 @@
 	- [Forgeting Conditional Import](#forgeting-conditional-import)
 	- [Various Rule Details Errors](#various-rule-details-errors)
 	- [Key-Text-Mouse Separated strings Errors](#key-text-mouse-separated-strings-errors)
+	- [BringApp and StartApp no dynamic strings](#bringapp-and-startapp-no-dynamic-strings)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -140,6 +141,16 @@ vs
 Key("c-a,c-c")
 Text("nice day")
 Mouse("[12,100],(4,5)")
+```
+
+### BringApp and StartApp no dynamic strings
+
+```python
+BringApp("program","%(data)s")
+
+vs 
+
+Function(lambda data: BringApp('program',data.format()).execute())
 ```
 
 ## License
