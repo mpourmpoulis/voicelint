@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="voicelint", # Replace with your own username
-    version="0.0.0",
+    version="0.1.0",
     author="mpourmpoulis",
     # author_email="author@example.com",
     description="pylint plug-in for users of the programing by voice toolkit Caster",
